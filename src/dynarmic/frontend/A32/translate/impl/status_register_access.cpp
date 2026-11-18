@@ -12,7 +12,9 @@ namespace Dynarmic::A32 {
 // CPS<effect> <iflags>{, #<mode>}
 // CPS #<mode>
 bool TranslatorVisitor::arm_CPS() {
-    return InterpretThisInstruction();
+    // A no-op, as thumb16_CPS: 3DS programs run in user mode, where CPS changes nothing, and Azahar has no
+    // interpreter to fall back to (Skylanders Trap Team 3DS runs CPSID f at boot).
+    return true;
 }
 
 // MRS<c> <Rd>, <spec_reg>
